@@ -68,40 +68,18 @@
     </section>
   </div>
 </template>
+
 <script>
 import Login from '@/components/Login.vue'
-import './assets/css/login.css'
 
 export default {
-  name: 'pageLogin',
+  name: "pageLogin",
   components: {
     Login
   }
 }
 </script>
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-nav {
-  padding: 30px;
+<style scoped>
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-
-</style>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500;600;700&display=swap');
 </style>

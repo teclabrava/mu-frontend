@@ -1,0 +1,20 @@
+@media (max-width: 767.98px) {
+
+    .page {
+        padding-top: 0;
+    }
+
+    .site-menubar {
+        width: 260px;
+    }
+
+    .site-menubar-body {
+        height: 100%;
+    }
+}
+
+@media (max-width: 479.98px) {
+    .page-content {
+        padding: 10px;
+    }
+}
