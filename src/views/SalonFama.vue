@@ -16,14 +16,14 @@
                 </div>
               </form>
               <hr/>
-              <table class="table table-responsive table-hover table-striped align-middle">
+              <table class="table table-sm table-responsive table-hover table-striped align-middle">
                 <thead>
                 <tr>
                   <th>Ranking</th>
                   <th style="width: 100px;">Avatar</th>
                   <th>Nombres</th>
                   <th>Estado</th>
-                  <th>Puntos Acumulados</th>
+                  <th>Puntos</th>
                 </tr>
                 </thead>
                 <tbody>
