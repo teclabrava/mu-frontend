@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-manu">
+  <nav class="navbar  navbar-dark fixed-top navbar-expand-lg navbar-manu">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <span class="icon-manu"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></span>

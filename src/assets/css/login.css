@@ -1,6 +1,9 @@
 .page-login:before {
     background-image: url(../img/bg-01.jpg);
 }
+.page-login.admin:before {
+    background-image: url(../img/login.jpg);
+}
 
 .page-login form {
     width: 340px;
@@ -10,7 +13,7 @@
 .page-login form a {
     margin-left: 20px;
 }
-.page-login .page-content{
+.page-login:not(.admin) .page-content{
     background: rgba(3,2,2,0.2);
     height: 100%;
     padding-top: 150px !important;
@@ -32,3 +35,4 @@
         width: auto;
     }
 }
+
