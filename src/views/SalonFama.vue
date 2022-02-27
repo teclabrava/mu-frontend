@@ -4,7 +4,7 @@
       <div class="col-lg-4 bg-fame d-none d-lg-block"></div>
       <div class="col-lg-8 offset-lg-4">
         <div class="site-navbar-small text-center">
-          <div class="row">
+          <div class="p-4">
             <div class="col-12 col-xl-8 offset-xl-2 pt-5">
               <h1 class="title text-primary">Salón de la fama</h1>
               <p class="">Nuestros mejores guerreros estan aquí</p>

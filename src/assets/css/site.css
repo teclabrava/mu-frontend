@@ -148,7 +148,7 @@ a.navbar-brand {
 .navbar-manu .navbar-nav .nav-link:focus,
 .site-footer a:hover,
 .site-footer a:focus,
-.navbar-manu .router-link-exact-active {
+.navbar-manu .active {
     color: #ffffff !important;
 }
 
