@@ -25,40 +25,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>1</td>
+            <tr v-for="(player, index) in players" :key="player.id">
+              <td>{{ index + 1 }}</td>
               <td><img src="../assets/img/avatar-01.png" class="w-50" alt="Juan Andres"/></td>
-              <td>Juan Andres</td>
-              <td>Activo</td>
-              <td>64.254</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td><img src="../assets/img/avatar-02.png" class="w-50" alt="Juan Andres"/></td>
-              <td>Juan Andres</td>
-              <td>Activo</td>
-              <td>64.254</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td><img src="../assets/img/avatar-03.png" class="w-50" alt="Juan Andres"/></td>
-              <td>Juan Andres</td>
-              <td>Activo</td>
-              <td>64.254</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td><img src="../assets/img/avatar-04.png" class="w-50" alt="Juan Andres"/></td>
-              <td>Juan Andres</td>
-              <td>Activo</td>
-              <td>64.254</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td><img src="../assets/img/avatar-02.png" class="w-50" alt="Juan Andres"/></td>
-              <td>Juan Andres</td>
-              <td>Activo</td>
-              <td>64.254</td>
+              <td>{{ player.nickname }}</td>
+              <td>{{ player.status == 1 ? 'Activo' : 'Inactivo' }}</td>
+              <td>{{ player.ranking }}</td>
             </tr>
             </tbody>
           </table>
@@ -69,8 +41,20 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  name: 'SalonFamaView'
+  name: 'SalonFamaView',
+  data: () => ({
+    players: null
+  }),
+  created () {
+    axios
+      .get(process.env.VUE_APP_API_URL + 'player')
+      .then((p) => {
+        this.players = p.data
+      })
+  }
 }
 </script>
 

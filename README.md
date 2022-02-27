@@ -1,6 +1,14 @@
 # mu-frontend
 
 ## Project setup
+
+Create .env file with URL api info:
+
+```
+VUE_APP_API_URL=http://localhost:8080/q
+```
+
+Next
 ```
 npm install
 ```
