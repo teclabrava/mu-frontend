@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-center">
     <p class="bg-primary p-2 rounded-2 fw-bold">{{ msg }}</p>
     <form method="post" action="#" class="form-floating">
       <div class="form-floating mb-3">

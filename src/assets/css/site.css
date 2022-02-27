@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500;600;700&display=swap');
 body {
     font-family: 'Baloo Thambi 2', cursive !important;
 }
-hr{
+
+hr {
     color: #71726a;
     opacity: 1;
+}
+
+.site-navbar-small {
+    padding-top: 61px;
 }
 
 .layout-full {
@@ -23,11 +29,12 @@ hr{
 }
 
 
-.page-dark.layout-full{
+.page-dark.layout-full {
     position: relative;
     z-index: 0;
     color: #fff;
 }
+
 .page-dark.layout-full::before {
     position: fixed;
     top: 0;
@@ -39,7 +46,6 @@ hr{
     background-position: center top;
     background-size: cover;
 }
-
 
 
 .page-dark.layout-full::after {
@@ -75,7 +81,6 @@ hr{
     max-width: 100%;
     font-size: 1rem;
 }
-
 
 
 .page-dark.layout-full {
@@ -133,7 +138,7 @@ a.navbar-brand {
 
 .navbar-manu .navbar-nav .nav-link,
 .site-footer a {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.7);
     text-transform: uppercase;
     font-weight: 400;
 }
@@ -141,7 +146,8 @@ a.navbar-brand {
 .navbar-manu .navbar-nav .nav-link:hover,
 .navbar-manu .navbar-nav .nav-link:focus,
 .site-footer a:hover,
-.site-footer a:focus {
+.site-footer a:focus,
+.navbar-manu .router-link-exact-active{
     color: #ffffff !important;
 }
 
@@ -161,19 +167,25 @@ a.navbar-brand {
     float: right;
 }
 
-.form-floating>label{
+.form-floating > label {
     color: #2e3336;
 }
 
 .bg-primary {
-    background-color: #009999!important;
+    background-color: #009999 !important;
 }
+
 .text-primary {
     color: #009999 !important;
 }
+
 .bg-secondary {
     background-color: #e01281 !important;
 }
+
 .text-secondary {
     color: #e01281 !important;
+}
+.img-thumbnail{
+    background: #009999;
 }

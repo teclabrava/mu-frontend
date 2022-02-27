@@ -1,0 +1,14 @@
+#quienes-somos{
+    background: transparent url("../img/slider-bg.jpg") center 70% no-repeat;
+    background-size: cover;
+    min-height: 700px;
+    border-bottom: 5px solid rgba(0,153,153,0.4);
+}
+#quienes-somos .title{
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 1rem;
+}
+#quienes-somos p{
+    font-size: 2rem;
+}
