@@ -11,8 +11,9 @@
               <form>
                 <div class="input-group mb-3">
                   <input type="text" class="form-control form-control-lg" placeholder="Ingrese el término a buscar..."
-                         aria-label="Término a buscar" aria-describedby="button-addon2">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
+                         aria-label="Término a buscar" aria-describedby="button-addon2" v-model="search"
+                         v-on:keyup="doSearch">
+                  <span class="input-group-text" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
                 </div>
               </form>
               <hr/>
@@ -27,12 +28,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="(player, index) in players" :key="player.id">
+                <tr v-for="({id, nickname, status, ranking}, index) in players" :key="id">
                   <td>{{ index + 1 }}</td>
-                  <td><img src="../assets/img/avatar-01.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>{{ player.nickname }}</td>
-                  <td>{{ player.status == 1 ? 'Activo' : 'Inactivo' }}</td>
-                  <td>{{ player.ranking }}</td>
+                  <td><img src="../assets/img/avatar-01.png" class="w-50" :alt="nickname"/></td>
+                  <td>{{ nickname }}</td>
+                  <td>{{ status }}</td>
+                  <td>{{ ranking }}</td>
                 </tr>
                 </tbody>
               </table>
@@ -51,7 +52,8 @@ import axios from 'axios'
 export default {
   name: 'SalonFamaView',
   data: () => ({
-    players: null
+    players: null,
+    search: null
   }),
   created () {
     axios
@@ -59,6 +61,17 @@ export default {
       .then((p) => {
         this.players = p.data
       })
+      .catch(console.log)
+  },
+  methods: {
+    doSearch () {
+      axios
+        .get(process.env.VUE_APP_API_URL + 'player?nickname=' + this.search)
+        .then((p) => {
+          this.players = p.data
+        })
+        .catch(console.log)
+    }
   }
 }
 </script>
