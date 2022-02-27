@@ -1,0 +1,6 @@
+
+.bg-fame{
+    background: url("../img/home-scroll-section-bg.jpg") left bottom no-repeat;
+    position: fixed;
+    min-height: 100%;
+}
