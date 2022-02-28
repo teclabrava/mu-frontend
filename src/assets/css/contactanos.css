@@ -1,5 +1,49 @@
-#contact-form{
+#contact-form {
     background: url("../img/home-scroll-section-bg.jpg") left bottom no-repeat;
     min-height: 100%;
     padding: 20% 10% 20% 10%;
+    color: #FFF;
+}
+
+.summary {
+    display: -webkit-flex;
+    display: flex;
+}
+.summary a{
+    color: #FFF;
+}
+
+.summary-icon {
+    -webkit-flex-shrink: 0 !important;
+    flex-shrink: 0 !important;
+    height: 50px !important;
+    font-size: 50px !important;
+    line-height: 1 !important;
+    color: #24b47e !important;
+}
+
+.summary-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.summary-description{
+    font-size: 0.95rem;
+}
+
+@media (min-width: 576px) {
+    .summary.icon-left .summary-icon {
+        margin-right: 30px;
+    }
+
+    .summary.-icon-left .summary-icon, .summary.-icon-right .summary-icon {
+        width: 50px;
+        text-align: center;
+    }
+}
+
+@media (min-width: 576px) {
+    .summary.-icon-left .summary-icon, .summary.-icon-right .summary-icon {
+        width: 50px;
+        text-align: center;
+    }
 }

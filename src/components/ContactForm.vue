@@ -1,35 +1,63 @@
 <template>
-  <div class="text-center">
-    <form method="post" action="#" class="form-floating">
-      <div class="form-floating mb-5">
-        <input type="text" class="form-control" id="nombres" name="nombres">
-        <label class="floatingInput" for="nombres">Nombres</label>
+  <div class="page-contact">
+    <div class="summary">
+      <div class="summary-icon">
+        <font-awesome-icon :icon="['fa', 'location-pin']" />
       </div>
-      <div class="form-floating mb-5">
-        <input type="text" class="form-control" id="apellidos" name="apellidos">
-        <label class="floatingInput" for="apellidos">Apellidos</label>
+      <div class="summary-info">
+        <h5 class="summary-title">Dirección</h5>
+        <p class="summary-description">De los Laureles N47-149 y de los Mortiños</p>
       </div>
-      <div class="form-floating mb-5">
-        <input type="email" class="form-control" id="email" name="email">
-        <label class="floatingInput" for="email">Correo electrónico</label>
+    </div>
+    <hr>
+    <div class="summary">
+      <div class="summary-icon">
+        <span class="ion-ios-telephone-outline x4"></span>
       </div>
-      <div class="form-floating mb-5">
-        <select class="form-select" id="atencion" aria-label="Seleccion de opción de soporte">
-          <option selected>Seleccione una opción</option>
-          <option value="1">Sporte</option>
-          <option value="2">Servicios</option>
-          <option value="3">Información</option>
-        </select>
-        <label for="atencion">Opciones de atención</label>
+      <div class="summary-info">
+        <h5 class="summary-title">Phone Number</h5>
+        <p class="summary-description u-color-grey">
+          <a href="tel:+593996445188">+593 996 445 188</a>
+        </p>
       </div>
-      <div class="form-floating mb-5">
-        <textarea class="form-control" placeholder="Leave a comment here" id="comentarios" style="height: 100px"></textarea>
-        <label for="comentarios">Comentarios</label>
+    </div>
+    <hr>
+    <div class="summary">
+      <div class="summary-icon">
+        <span class="ion-ios-email-outline x4"></span>
       </div>
-      <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-outline-light">Enviar</button>
+      <div class="summary-info">
+        <h5 class="summary-title">Correo Electrónico</h5>
+        <p class="summary-description u-color-grey">
+          <a href="mailto:info@teclabrava.com">info@teclabrava.com</a></p>
       </div>
-    </form>
+    </div>
+<!--    <hr>
+    <h6 class="media-title">Social Media</h6>
+    <div class="">
+      <ul class="social">
+        <li class="social-item">
+          <a class="social-a icon-facebook" href="https://www.facebook.com" target="_blank">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li class="social-item">
+          <a class="social-a icon-twitter" href="https://www.twitter.com" target="_blank">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li class="social-item">
+          <a class="social-a icon-linkedin" href="http://www.linkedin.com" target="_blank">
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li class="social-item">
+          <a class="social-a icon-google" href="https://www.google.com" target="_blank">
+            <i class="fa fa-google-plus" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+    </div>-->
   </div>
 </template>
 

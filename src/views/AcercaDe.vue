@@ -26,20 +26,19 @@
               <div class="col-lg-4 col-12 text-center">
                 <img src="../assets/img/mario-opt.jpg" class="img-thumbnail rounded-circle" alt="Restaurantes"/>
                 <span class="text-capitalize d-block text-primary fs-4 pt-3">Mario</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget quam et sapien ornare interdum.
-                  Integer diam arcu, rhoncus non sollicitudin tempor, tincidunt ut erat.</p>
+                <p>Apasionado por la tecnología, los proyectos y el liderazgo. Fundador de YAKINDU CIA. LTDA. y SIGHTBOT
+                  S.A.S. Ingeniero en Sistemas y Máster en Innovación y Transformación Digital.</p>
               </div>
               <div class="col-lg-4 col-12 text-center">
                 <img src="../assets/img/byron-opt.jpg" class="img-thumbnail rounded-circle" alt="Spa"/>
                 <span class="text-capitalize d-block text-primary fs-4 pt-3">Byron</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget quam et sapien ornare interdum.
-                  Integer diam arcu, rhoncus non sollicitudin tempor, tincidunt ut erat.</p>
+                <p>Cada día aprendiendo más y más. Fullstack de corazón</p>
               </div>
               <div class="col-lg-4 col-12 text-center">
                 <img src="../assets/img/tono-opt.jpg" class="img-thumbnail rounded-circle" alt="Hoteleria"/>
                 <span class="text-capitalize d-block text-primary fs-4 pt-3">Antonio</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget quam et sapien ornare interdum.
-                  Integer diam arcu, rhoncus non sollicitudin tempor, tincidunt ut erat.</p>
+                <p>Conocimientos en Desarrollo y Gestión de Proyectos de Innovación de Software, UX design, Diseño Web y
+                  Accesibilidad web.</p>
               </div>
             </div>
           </div>
