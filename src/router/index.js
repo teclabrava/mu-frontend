@@ -22,7 +22,7 @@ const routes = [
   {
     path: '/administracion',
     name: 'Administracion',
-    component: () => import('../views/Administracion')
+    component: () => import('../views/AdminPlayer')
   },
   {
     path: '/contactanos',
