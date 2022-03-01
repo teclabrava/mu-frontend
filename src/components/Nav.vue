@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar  navbar-dark fixed-top navbar-expand-lg navbar-manu">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <router-link to="/" class="navbar-brand">
         <span class="icon-manu"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></span>
-      </a>
+      </router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
