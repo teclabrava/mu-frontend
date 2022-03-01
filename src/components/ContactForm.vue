@@ -15,7 +15,7 @@
         <span class="ion-ios-telephone-outline x4"></span>
       </div>
       <div class="summary-info">
-        <h5 class="summary-title">Phone Number</h5>
+        <h5 class="summary-title">Teléfono</h5>
         <p class="summary-description u-color-grey">
           <a href="tel:+593996445188">+593 996 445 188</a>
         </p>
