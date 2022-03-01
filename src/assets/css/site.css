@@ -74,6 +74,9 @@ hr {
     color: #fff;
     text-transform: uppercase;
 }
+.page-dark a{
+    color: #fff;
+}
 
 .page {
     position: relative;
@@ -176,7 +179,18 @@ a.navbar-brand {
 .form-floating > label {
     color: #2e3336;
 }
-
+.form-control {
+    color: rgba(255,255,255,0.9);
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0;
+}
+.form-floating > label {
+    color: rgba(255,255,255,0.7);
+}
 .bg-primary {
     background-color: #009999 !important;
 }

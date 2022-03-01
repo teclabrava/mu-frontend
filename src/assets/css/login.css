@@ -6,8 +6,8 @@
 }
 
 .page-login form {
-    width: 340px;
-    margin: 30px 0;
+    width: 100%;
+    margin: 3rem 0;
 }
 
 .page-login form a {
@@ -16,7 +16,10 @@
 .page-login:not(.admin) .page-content{
     background: rgba(3,2,2,0.2);
     height: 100%;
-    padding-top: 150px !important;
+    padding: 150px 0 0 0 !important;
+}
+.page-login .page-content{
+    width: 480px;
 }
 #instrucciones{
     background: #FFF;

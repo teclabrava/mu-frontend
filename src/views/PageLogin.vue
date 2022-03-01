@@ -80,6 +80,14 @@ export default {
   name: 'PageLogin',
   components: {
     Login
+  },
+  data: function (){
+    return{
+      usuario: "",
+      password: "",
+      error: false,
+      error_msg: ""
+    }
   }
 }
 </script>

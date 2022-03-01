@@ -1,5 +1,8 @@
 # mu-frontend
 
+## Despliegue de la Aplicación.
+El frontend esta desplegado con Terraform en AWS
+
 ## Project setup
 
 Create .env file with URL api info:
