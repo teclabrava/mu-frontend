@@ -3,7 +3,7 @@
 The web messages and tests info are in Spanish. In a second phase, multi-language will be implemented.
 
 ## App Deployment.
-Frontend is deployed with Terraform on AWS
+This project manage the Mañu's frontend with Terraform en AWS
 
 ## Project setup
 
@@ -13,7 +13,7 @@ Create .env file with URL api info:
 VUE_APP_API_URL=http://localhost:8080/q
 ```
 
-Next
+From the command line run
 ```
 npm install
 ```

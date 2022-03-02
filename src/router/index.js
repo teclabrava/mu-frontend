@@ -12,12 +12,12 @@ const routes = [
   {
     path: '/acerca-de',
     name: 'Acerca de',
-    component: () => import('../views/AcercaDe')
+    component: () => import('../views/AboutUs')
   },
   {
     path: '/salon-fama',
     name: 'Salon de la Fama',
-    component: () => import('../views/SalonFama')
+    component: () => import('../views/HallFame')
   },
   {
     path: '/administracion',
@@ -37,7 +37,7 @@ const routes = [
   {
     path: '/contactanos',
     name: 'Contactanos',
-    component: () => import('../views/Contactanos')
+    component: () => import('../views/ContactUs')
   }
 ]
 
