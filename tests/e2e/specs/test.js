@@ -1,8 +1,8 @@
 // https://docs.cypress.io/api/table-of-contents
 
-describe('My First Test', () => {
-  it('Visits the app root url', () => {
+describe('Verifica que en el home exista información del juego', () => {
+  it('El usuario visita home', () => {
     cy.visit('/')
-    cy.contains('h1', 'Welcome to Your Vue.js App')
+    cy.contains('h1', '¿En qué consiste el juego?')
   })
 })

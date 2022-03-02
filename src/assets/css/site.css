@@ -34,6 +34,14 @@ hr {
     margin-left: 0 !important;
 }
 
+.page-link,
+.page-link:hover {
+    color: #009999;
+}
+.page-link:focus {
+    color: #009999;
+    box-shadow: 0 0 0 0.25rem rgb(0 153 153 / 25%);
+}
 
 .page-dark.layout-full {
     position: relative;
@@ -179,17 +187,20 @@ a.navbar-brand {
 .form-floating > label {
     color: #2e3336;
 }
-.form-control {
-    color: rgba(255,255,255,0.9);
-    background-color: transparent;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid #ced4da;
-    border-radius: 0;
+.player-form input.form-control,
+.player-form select.form-select {
+    text-align: center;
+}
+.player-form .form-control:focus,
+.player-form .form-select:focus {
+    box-shadow: 0 0 0 0.1rem rgb(0 153 153 / 25%);
 }
 .form-floating > label {
     color: rgba(255,255,255,0.7);
+}
+.avatar-player {
+    height: 90px;
+    width: 90px;
 }
 .bg-primary {
     background-color: #009999 !important;

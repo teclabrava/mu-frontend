@@ -2,7 +2,7 @@
   <div class="page-login layout-full page-dark">
     <div class="page">
       <div class="page-content p-5">
-        <Login msg="Accede a la plataforma"/>
+        <Login />
       </div>
       <section id="instrucciones" class="p-5 mb-4">
         <div class="container">
@@ -81,12 +81,12 @@ export default {
   components: {
     Login
   },
-  data: function (){
-    return{
-      usuario: "",
-      password: "",
+  data: function () {
+    return {
+      usuario: '',
+      password: '',
       error: false,
-      error_msg: ""
+      error_msg: ''
     }
   }
 }

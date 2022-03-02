@@ -23,6 +23,9 @@ import PlayerList from '@/components/PlayerList'
 
 export default {
   name: 'AdminPlayerView',
+  created () {
+    this.$store.dispatch('initApp')
+  },
   data: () => ({
     loggedIn: 'S'
   }),

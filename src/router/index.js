@@ -25,6 +25,16 @@ const routes = [
     component: () => import('../views/AdminPlayer')
   },
   {
+    path: '/nuevo-jugador',
+    name: 'Nuevo',
+    component: () => import('../views/CreatePlayer')
+  },
+  {
+    path: '/actualizar-jugador/:id',
+    name: 'Actualizar',
+    component: () => import('../views/UpdatePlayer')
+  },
+  {
     path: '/contactanos',
     name: 'Contactanos',
     component: () => import('../views/Contactanos')

@@ -1,7 +1,9 @@
 # mu-frontend
 
-## Despliegue de la Aplicación.
-El frontend esta desplegado con Terraform en AWS
+The web messages and tests info are in Spanish. In a second phase, multi-language will be implemented.
+
+## App Deployment.
+Frontend is deployed with Terraform on AWS
 
 ## Project setup
 
