@@ -1,17 +1,16 @@
 # mu-frontend
 
-## Despliegue de la Aplicación.
-El frontend esta desplegado con Terraform en AWS
+## Application deployment.
+This project manage the Mañu's frontend with Terraform en AWS
 
 ## Project setup
-
 Create .env file with URL api info:
 
 ```
 VUE_APP_API_URL=http://localhost:8080/q
 ```
 
-Next
+From the command line run
 ```
 npm install
 ```
