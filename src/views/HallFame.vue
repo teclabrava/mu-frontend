@@ -11,8 +11,9 @@
               <form>
                 <div class="input-group mb-3">
                   <input type="text" class="form-control form-control-lg" placeholder="Ingrese el término a buscar..."
-                         aria-label="Término a buscar" aria-describedby="button-addon2">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
+                         aria-label="Término a buscar" aria-describedby="button-addon2" v-model="search"
+                         v-on:keyup="doSearch">
+                  <span class="input-group-text" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
                 </div>
               </form>
               <hr/>
@@ -27,145 +28,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>1</td>
-                  <td><img src="../assets/img/avatar-01.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td><img src="../assets/img/avatar-02.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td><img src="../assets/img/avatar-03.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td><img src="../assets/img/avatar-04.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td><img src="../assets/img/avatar-02.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td><img src="../assets/img/avatar-01.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td><img src="../assets/img/avatar-02.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td><img src="../assets/img/avatar-03.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td><img src="../assets/img/avatar-04.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td><img src="../assets/img/avatar-02.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td><img src="../assets/img/avatar-01.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td><img src="../assets/img/avatar-02.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td><img src="../assets/img/avatar-03.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td><img src="../assets/img/avatar-04.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td><img src="../assets/img/avatar-02.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td><img src="../assets/img/avatar-01.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td><img src="../assets/img/avatar-02.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td><img src="../assets/img/avatar-03.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td><img src="../assets/img/avatar-04.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td><img src="../assets/img/avatar-02.png" class="w-50" alt="Juan Andres"/></td>
-                  <td>Juan Andres</td>
-                  <td>Activo</td>
-                  <td>64.254</td>
+                <tr v-for="({id, nickname, status, ranking}, index) in players" :key="id">
+                  <td>{{ index + 1 }}</td>
+                  <td><img src="../assets/img/avatar-01.png" class="w-50" :alt="nickname"/></td>
+                  <td>{{ nickname }}</td>
+                  <td>{{ status }}</td>
+                  <td>{{ ranking }}</td>
                 </tr>
                 </tbody>
               </table>
@@ -179,9 +47,32 @@
 
 <script>
 import '../assets/css/salon-fama.css'
+import axios from 'axios'
 
 export default {
-  name: 'SalonFamaView'
+  name: 'SalonFamaView',
+  data: () => ({
+    players: null,
+    search: null
+  }),
+  created () {
+    axios
+      .get(process.env.VUE_APP_API_URL + 'player')
+      .then((p) => {
+        this.players = p.data
+      })
+      .catch(console.log)
+  },
+  methods: {
+    doSearch () {
+      axios
+        .get(process.env.VUE_APP_API_URL + 'player?nickname=' + this.search)
+        .then((p) => {
+          this.players = p.data
+        })
+        .catch(console.log)
+    }
+  }
 }
 </script>
 
