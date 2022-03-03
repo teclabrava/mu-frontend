@@ -14,7 +14,6 @@ jobs:
       - name: Install Node dependencies
         run: |
           npm install
-            - name: Environment Settings
       - name: Run lint tests
         run: |
           echo "VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }}" >> .env
@@ -42,7 +41,6 @@ jobs:
       - name: Install Node dependencies
         run: |
           npm install
-            - name: Environment Settings
       - name: Run e2e tests
         run: |
           echo "VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }}" >> .env
@@ -50,6 +48,11 @@ jobs:
           npm start &
           npx cypress run
   deploy:
+    needs:
+      - test-lints
+      - test-unit
+      - test-e2e
+    name: Upload to S3
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
