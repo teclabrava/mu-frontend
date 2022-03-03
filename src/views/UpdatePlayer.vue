@@ -7,7 +7,7 @@
           <div class="p-4">
             <div class="col-12 col-xl-8 offset-xl-2 pt-5">
               <h1 class="title text-primary">Actualizar jugador</h1>
-              <PlayerForm :id="id"/>
+              <PlayerForm />
             </div>
           </div>
         </div>
@@ -21,14 +21,9 @@ import PlayerForm from '@/components/PlayerForm'
 
 export default {
   name: 'UpdatePlayerView',
-  data: () => {
-    return {
-      id: null
-    }
-  },
   created () {
-    this.id = this.$route.params.id
-    this.$store.dispatch('getPlayer', this.id)
+    this.$store.state.playerId = this.$route.params.id
+    this.$store.dispatch('getPlayer', this.$store.state.playerId)
   },
   components: {
     PlayerForm

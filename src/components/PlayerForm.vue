@@ -2,7 +2,7 @@
   <form
     @submit.prevent="onSubmit"
     class="player-form mt-5">
-    <input v-if="player.id" v-model="player.id" type="hidden" />
+    <input v-if="$store.state.playerId" v-model="$store.state.playerId" type="hidden" />
     <div class="mb-3">
       <label for="nickname" class="form-label text-primary">Nickname *</label>
       <input v-model="player.nickname" type="text" class="form-control" id="nickname" aria-describedby="nicknameHelp">
@@ -38,7 +38,7 @@
       </div>
       <div id="rankingHelp" class="form-text">Ingresa los puntos del jugador</div>
     </div>
-    <button type="submit" class="btn btn-primary btn-sm me-2" @click="savePlayer">{{ id ? 'Actualziar' : 'Crear' }}</button>
+    <button type="submit" class="btn btn-primary btn-sm me-2" @click="savePlayer">{{ $store.state.playerId ? 'Actualizar' : 'Crear' }}</button>
     <router-link to="/administracion" class="btn btn-secondary btn-sm">Cancelar</router-link>
   </form>
 </template>
@@ -48,12 +48,6 @@ import SimpleVueValidation from 'simple-vue-validator'
 const Validator = SimpleVueValidation.Validator
 export default {
   name: 'PlayerForm',
-  props: {
-    id: {
-      type: String,
-      default: null
-    }
-  },
   data: () => ({
     loggedIn: 'S',
     statusArray: ['oro', 'plata', 'bronce'],
@@ -61,7 +55,7 @@ export default {
   }),
   computed: {
     player () {
-      return this.$props.id
+      return this.$store.state.playerId
         ? this.$store.getters.getPlayer
         : {
             nickname: null,
@@ -88,8 +82,15 @@ export default {
   methods: {
     savePlayer () {
       this.$validate().then(function (success) {
-        const saveMethod = this.$props.id ? 'updatePlayer' : 'addPlayer'
-        const type = this.id ? 'actualizado' : 'creado'
+        console.log(success)
+        if (!success) {
+          return
+        }
+        console.log(success)
+        console.log(this.$store.state.playerId == null)
+        const saveMethod = this.$store.state.playerId ? 'updatePlayer' : 'addPlayer'
+        const type = this.$store.state.playerId ? 'actualizado' : 'creado'
+        console.log(type)
         this.$store.dispatch(saveMethod, this.player).then(() => {
           this.$router.push('hallFame')
           this.$notify({ group: 'notifications', type: 'success', title: `Jugador ${type}`, text: `El jugador ha sido ${type} con éxito` })

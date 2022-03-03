@@ -52,33 +52,10 @@ export default {
   name: 'CreatePlayerView',
   components: {
     PlayerForm
+  },
+  created () {
+    this.$store.state.playerId = null
   }
-  // data: () => ({
-  //   loggedIn: 'S',
-  //   statusArray: ['oro', 'plata', 'bronce'],
-  //   player: {
-  //     nickname: null,
-  //     status: null,
-  //     avatar: null,
-  //     ranking: null
-  //   }
-  // }),
-  // methods: {
-  //   createPlayer () {
-  //     this.$store.dispatch('addPlayer', this.player).then(() => {
-  //       this.$router.push('/salon-fama')
-  //       this.$notify({ group: 'notifications', type: 'success', title: 'Jugador creado', text: 'El jugador ha sido creado con éxito' })
-  //     })
-  //   },
-  //   setAvatar (e) {
-  //     const file = e.target.files || e.dataTransfer.files
-  //     if (!file.length) {
-  //       return
-  //     }
-  //
-  //     this.player.avatar = file[0]
-  //   }
-  // }
 }
 </script>
 

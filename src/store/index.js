@@ -21,6 +21,7 @@ export default new Vuex.Store({
     },
     player: null,
     q: null,
+    playerId: null,
     url: 'player'
   },
   getters: {
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     },
     getPlayer (state) {
       return state.player
+    },
+    getPlayerId (state) {
+      return state.playerId
     }
   },
   mutations: {
