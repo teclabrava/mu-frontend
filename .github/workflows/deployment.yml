@@ -38,15 +38,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
       - name: Run e2e tests
         uses: cypress-io/github-action@v2
-        run: |
-          echo VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }} >> .env
-          npm ci --prefer-offline
-          npm run serve &
-          npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
+        with:
+          build: npm run build
+          start: PORT=3000 npm start
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          VUE_APP_API_URL: ${{ secrets.VUE_APP_API_URL }}
+
   deploy:
     needs:
       - test-lints
