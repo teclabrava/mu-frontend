@@ -8,6 +8,23 @@ hr {
     color: #71726a;
     opacity: 1;
 }
+.btn-primary {
+    background-color: #009999;
+    border-color: #009999;
+}
+.btn-primary:hover {
+    background-color: #028b8b;
+    border-color: #018383;
+}
+.text-primary {
+    color: #009999 !important;
+}
+.alert {
+    padding: 0.3rem 1rem;
+}
+.text-secondary {
+    color: #e01281 !important;
+}
 .navbar .collapse.show ul{
     margin-top: 1rem;
 }
