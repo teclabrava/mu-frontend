@@ -44,10 +44,11 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           build: npm run build
-          start: PORT=3000 npm start
+          start: npm start
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           VUE_APP_API_URL: ${{ secrets.VUE_APP_API_URL }}
+          PORT:3000
 
   deploy:
     needs:
