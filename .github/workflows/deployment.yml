@@ -4,6 +4,51 @@ on:
     branches:
       - 'develop'
 jobs:
+  test-lints:
+    name: Test Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Install Node dependencies
+        run: |
+          npm install
+            - name: Environment Settings
+      - name: Run lint tests
+        run: |
+          echo "VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }}" >> .env
+          npm run lint
+  test-unit:
+    name: Test Unit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Install Node dependencies
+        run: |
+          npm install
+      - name: Run unit tests
+        run: |
+          npm run test:unit
+  test-e2e:
+    name: Test e2e
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Install Node dependencies
+        run: |
+          npm install
+            - name: Environment Settings
+      - name: Run e2e tests
+        run: |
+          echo "VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }}" >> .env
+          npm ci --prefer-offline
+          npm start &
+          npx cypress run
   deploy:
     runs-on: ubuntu-latest
     steps:
