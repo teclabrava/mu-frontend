@@ -38,8 +38,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        run: |
-          npm install
+        with:
+          fetch-depth: 1
       - name: Run e2e tests
         uses: cypress-io/github-action@v2
         run: |
@@ -55,25 +55,25 @@ jobs:
     name: Upload to S3
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-      with:
-        fetch-depth: 1
-    - name: Configure AWS credentials from Test account
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ secrets.AWS_REGION }}
-    - name: Install Node dependencies
-      run: |
-        npm install
-    - name: Environment Settings
-      run: |
-        echo VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }} >> .env
-    - name: Build of Solution
-      run: |
-        npm run build
-    - name: Deploym to AWS
-      run: |
-        aws s3 sync ./dist/ s3://manu-frontend-${GITHUB_REF##*/} --delete --exclude avatars --cache-control max-age=86400
-        aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Configure AWS credentials from Test account
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      - name: Install Node dependencies
+        run: |
+          npm install
+      - name: Environment Settings
+        run: |
+          echo VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }} >> .env
+      - name: Build of Solution
+        run: |
+          npm run build
+      - name: Deploym to AWS
+        run: |
+          aws s3 sync ./dist/ s3://manu-frontend-${GITHUB_REF##*/} --delete --exclude avatars --cache-control max-age=86400
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"
