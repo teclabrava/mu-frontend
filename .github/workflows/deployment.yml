@@ -45,7 +45,7 @@ jobs:
         run: |
           echo "VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }}" >> .env
           npm ci --prefer-offline
-          npm start &
+          npm run serve &
           npx cypress run
   deploy:
     needs:
