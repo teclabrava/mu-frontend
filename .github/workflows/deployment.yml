@@ -16,7 +16,7 @@ jobs:
           npm install
       - name: Run lint tests
         run: |
-          echo "VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }}" >> .env
+          echo VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }} >> .env
           npm run lint
   test-unit:
     name: Test Unit
