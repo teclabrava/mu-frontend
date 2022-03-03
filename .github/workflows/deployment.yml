@@ -6,7 +6,7 @@ on:
 jobs:
   test-lints:
     name: Test Lint
-    runs-on: cypress/base:16.13.0
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
         with:
@@ -34,19 +34,19 @@ jobs:
   test-e2e:
     name: Test e2e
     runs-on: ubuntu-latest
+    container: cypress/browsers:node12.18.3-chrome87-ff82
     steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
-      - name: Install Node dependencies
+      - name: Checkout
+        uses: actions/checkout@v2
         run: |
           npm install
       - name: Run e2e tests
+        uses: cypress-io/github-action@v2
         run: |
-          echo "VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }}" >> .env
+          echo VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }} >> .env
           npm ci --prefer-offline
           npm run serve &
-          npx cypress run
+          npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
   deploy:
     needs:
       - test-lints
@@ -69,7 +69,7 @@ jobs:
         npm install
     - name: Environment Settings
       run: |
-        echo "VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }}" >> .env
+        echo VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }} >> .env
     - name: Build of Solution
       run: |
         npm run build
