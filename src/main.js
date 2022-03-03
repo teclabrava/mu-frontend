@@ -5,9 +5,9 @@ import router from './router'
 import store from './store'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import Notifications from 'vue-notification'
@@ -19,8 +19,8 @@ import './assets/css/site.css'
 import './assets/css/responsive.css'
 
 // Make BootstrapVue available throughout your project
-library.add(faUserSecret)
-library.add(faFontAwesome)
+library.add(fas)
+library.add(fab)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin

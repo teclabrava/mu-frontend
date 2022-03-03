@@ -2,7 +2,7 @@
   <div class="page-contact">
     <div class="summary">
       <div class="summary-icon">
-        <font-awesome-icon :icon="['fa', 'location-pin']" />
+        <font-awesome-icon :icon="['fa', 'location-pin']"/>
       </div>
       <div class="summary-info">
         <h5 class="summary-title">Dirección</h5>
@@ -38,7 +38,7 @@
       <ul class="social">
         <li class="social-item">
           <a class="social-a icon-facebook" href="https://www.facebook.com" target="_blank">
-            <font-awesome-icon icon="fa-brands fa-facebook" />
+            <font-awesome-icon icon="fa-brands fa-facebook"/>
             <i class="fa fa-facebook" aria-hidden="true"></i>
           </a>
         </li>
@@ -63,8 +63,12 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 export default {
-  name: 'ContactForm'
+  name: 'ContactForm',
+  components: {
+    FontAwesomeIcon
+  }
 }
 </script>
 
