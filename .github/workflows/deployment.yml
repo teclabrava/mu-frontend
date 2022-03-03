@@ -48,7 +48,7 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           VUE_APP_API_URL: ${{ secrets.VUE_APP_API_URL }}
-          PORT:3000
+          PORT: 3000
 
   deploy:
     needs:
