@@ -4,7 +4,11 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import Notifications from 'vue-notification'
 
@@ -14,15 +18,14 @@ import './assets/css/manu-font.css'
 import './assets/css/site.css'
 import './assets/css/responsive.css'
 
-Vue.component('font-awesome-icon', FontAwesomeIcon)
-Vue.config.productionTip = false
-
 // Make BootstrapVue available throughout your project
+library.add(faUserSecret)
+library.add(faFontAwesome)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 Vue.use(Notifications)
-Vue.config.productionTip = false
 new Vue({
   router,
   store,

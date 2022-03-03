@@ -7,7 +7,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    players: [],
+    players: {
+      last: null,
+      per_page: null,
+      page_count: null,
+      total_count: null,
+      records: null,
+      links: {
+        first: null,
+        self: null,
+        next: null
+      }
+    },
     player: null,
     q: null,
     url: 'player'

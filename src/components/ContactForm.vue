@@ -32,12 +32,13 @@
           <a href="mailto:info@teclabrava.com">info@teclabrava.com</a></p>
       </div>
     </div>
-<!--    <hr>
+    <hr>
     <h6 class="media-title">Social Media</h6>
     <div class="">
       <ul class="social">
         <li class="social-item">
           <a class="social-a icon-facebook" href="https://www.facebook.com" target="_blank">
+            <font-awesome-icon icon="fa-brands fa-facebook" />
             <i class="fa fa-facebook" aria-hidden="true"></i>
           </a>
         </li>
@@ -57,7 +58,7 @@
           </a>
         </li>
       </ul>
-    </div>-->
+    </div>
   </div>
 </template>
 

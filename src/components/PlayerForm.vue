@@ -58,7 +58,8 @@ export default {
     savePlayer () {
       const saveMethod = this.player.id ? 'updatePlayer' : 'addPlayer'
       this.$store.dispatch(saveMethod, this.player).then(() => {
-        return this.$router.push('/salon-fama')
+        this.$router.push('/salon-fama')
+        this.$notify({ group: 'notifications', type: 'success', title: 'Jugador creado', text: 'El jugador ha sido creado con éxito' })
       })
     },
     setAvatar (e) {
