@@ -17,9 +17,6 @@
             <router-link to="/salon-fama" class="nav-link">Salon de la Fama</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/administracion" class="nav-link">Administración</router-link>
-          </li>
-          <li class="nav-item">
             <router-link to="/contactanos" class="nav-link">Contáctanos</router-link>
           </li>
         </ul>

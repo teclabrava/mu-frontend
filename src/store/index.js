@@ -1,24 +1,28 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+axios.defaults.baseURL = process.env.VUE_APP_API_URL
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    players: []
+    players: [],
+    player: null,
+    q: null,
+    url: 'player'
   },
   getters: {
     getPlayers (state) {
       return state.players
+    },
+    getPlayer (state) {
+      return state.player
     }
   },
   mutations: {
     initPlayers (state, players) {
       state.players = players
-    },
-    addPlayer (state, player) {
-      state.players.push(player)
     },
     updatePlayer (state, player) {
       const index = state.players.findIndex((c) => c.id === player.id)
@@ -26,41 +30,54 @@ export default new Vuex.Store({
         state.players[index] = player
       }
     },
-    deletePlayer (state, playerID) {
-      const index = state.players.findIndex((c) => c.id === playerID)
-      if (index > -1) {
-        state.players.splice(index, 1)
-      }
+    getPlayer (state, player) {
+      state.player = player
     }
   },
   actions: {
     initApp (context) {
-      axios.get('player').then((response) => {
+      axios.get(this.state.url, { params: { q: this.state.q } }).then((response) => {
         context.commit('initPlayers', response.data)
       })
     },
-    addPlayer (context, player) {
+    addPlayer: function (context, player) {
+      const data = new FormData()
+      const { nickname, status, avatar, ranking } = player
+      data.append('nickname', nickname)
+      data.append('status', status)
+      data.append('avatar', avatar)
+      data.append('ranking', parseInt(ranking))
       return axios
-        .post('player', JSON.stringify(player))
+        .post('player', data)
         .then((response) => {
-          context.commit('addPlayer', {
-            id: response.data.insert_id,
-            ...player
-          })
+          context.dispatch('initApp')
         })
     },
     updatePlayer (context, player) {
+      const data = new FormData()
+      data.append('nickname', player.nickname)
+      data.append('status', player.status)
+      data.append('avatar', player.avatar)
+      data.append('ranking', parseInt(player.ranking))
+
       return axios
-        .put('player', JSON.stringify(player))
+        .put('player/' + player.id, data)
         .then((response) => {
-          context.commit('updatePlayer', player)
+          context.commit('updatePlayer', response.data)
+        })
+    },
+    getPlayer (context, playerID) {
+      return axios
+        .get('player/' + playerID)
+        .then((response) => {
+          context.commit('getPlayer', response.data)
         })
     },
     deletePlayer (context, playerID) {
       return axios
-        .delete('player', JSON.stringify({ id: playerID }))
+        .delete('player/' + playerID)
         .then((response) => {
-          context.commit('deletePlayer', playerID)
+          context.dispatch('initApp')
         })
     }
   },
