@@ -53,6 +53,7 @@ jobs:
       - name: Environment Settings
         run: |
           echo VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }} >> .env
+          echo NODE_ENV=production >> .env
       - name: Build of Solution
         run: |
           npm run build
