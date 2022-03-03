@@ -8,6 +8,7 @@
             <div class="col-12 col-xl-8 offset-xl-2 pt-5">
               <h1 class="title text-primary">Nuevo jugador</h1>
               <form
+                @submit.prevent="onSubmit"
                 class="player-form mt-5">
                 <div class="mb-3">
                   <label for="nickname" class="form-label text-primary">Nickname</label>
@@ -60,7 +61,8 @@ export default {
   methods: {
     createPlayer () {
       this.$store.dispatch('addPlayer', this.player).then(() => {
-        this.$router.push('hallFame')
+        this.$router.push('/salon-fama')
+        this.$notify({ group: 'notifications', type: 'success', title: 'Jugador creado', text: 'El jugador ha sido creado con éxito' })
       })
     },
     setAvatar (e) {

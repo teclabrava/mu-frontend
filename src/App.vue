@@ -3,6 +3,7 @@
     <NavMain/>
     <router-view></router-view>
     <FooterMain/>
+    <notifications group="notifications" />
   </div>
 </template>
 <script>

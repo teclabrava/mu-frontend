@@ -37,7 +37,7 @@
             <td>{{ player.nickname }}</td>
             <td>{{ player.status }}</td>
             <td v-if="edit === 1">
-              <router-link :to="{ name: 'Actualizar', params: {id: player.id} }" class="pe-2 text-info"><i class="fa-solid fa-user-pen"></i></router-link>
+              <router-link :to="{ name: 'updatePlayer', params: {id: player.id} }" class="pe-2 text-info"><i class="fa-solid fa-user-pen"></i></router-link>
               <a @click="$store.dispatch('deletePlayer',player.id)" href='#' class="pe-2 text-danger" title="Eliminar">
                 <i class="fa-solid fa-user-slash"></i>
               </a>
