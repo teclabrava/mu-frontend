@@ -24,9 +24,6 @@ export default new Vuex.Store({
     initPlayers (state, players) {
       state.players = players
     },
-    addPlayer (state, player) {
-      state.players.push(player)
-    },
     updatePlayer (state, player) {
       const index = state.players.findIndex((c) => c.id === player.id)
       if (index > -1) {
@@ -53,7 +50,7 @@ export default new Vuex.Store({
       return axios
         .post('player', data)
         .then((response) => {
-          context.commit('addPlayer', response.data)
+          context.dispatch('initApp')
         })
     },
     updatePlayer (context, player) {

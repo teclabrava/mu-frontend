@@ -33,7 +33,7 @@
                   <div id="rankingHelp" class="form-text">Ingresa los puntos del jugador</div>
                 </div>
                 <button type="submit" class="btn btn-primary btn-sm me-2" @click="createPlayer">Crear</button>
-                <router-link to="/administracion" class="btn btn-secondary btn-sm">Cancelar</router-link>
+                <router-link to="/salon-fama" class="btn btn-secondary btn-sm">Cancelar</router-link>
               </form>
             </div>
           </div>
@@ -60,7 +60,7 @@ export default {
   methods: {
     createPlayer () {
       this.$store.dispatch('addPlayer', this.player).then(() => {
-        return this.$router.push('/salon-fama')
+        this.$router.push('hallFame')
       })
     },
     setAvatar (e) {

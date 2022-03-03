@@ -6,38 +6,37 @@ Vue.use(Router)
 const routes = [
   {
     path: '/',
-    name: 'Portada',
+    name: 'home',
     component: () => import('../views/Home')
   },
   {
     path: '/acerca-de',
-    name: 'Acerca de',
+    name: 'aboutUs',
     component: () => import('../views/AboutUs')
   },
   {
     path: '/salon-fama',
-    name: 'Salon de la Fama',
+    name: 'hallFame',
     component: () => import('../views/HallFame')
   },
   {
-    path: '/administracion',
-    name: 'Administracion',
-    component: () => import('../views/AdminPlayer')
-  },
-  {
     path: '/nuevo-jugador',
-    name: 'Nuevo',
+    name: 'newPlayer',
     component: () => import('../views/CreatePlayer')
   },
   {
     path: '/actualizar-jugador/:id',
-    name: 'Actualizar',
+    name: 'updatePlayer',
     component: () => import('../views/UpdatePlayer')
   },
   {
     path: '/contactanos',
-    name: 'Contactanos',
+    name: 'contactUs',
     component: () => import('../views/ContactUs')
+  },
+  {
+    path: '*',
+    redirect: '/'
   }
 ]
 
