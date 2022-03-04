@@ -38,7 +38,7 @@
       </div>
       <div id="rankingHelp" class="form-text">Ingresa los puntos del jugador</div>
     </div>
-    <button type="submit" class="btn btn-primary btn-sm me-2" @click="savePlayer">{{ $store.state.playerId ? 'Actualizar' : 'Crear' }}</button>
+    <button type="submit" class="btn btn-primary btn-sm me-2">{{ $store.state.playerId ? 'Actualizar' : 'Crear' }}</button>
     <router-link to="/administracion" class="btn btn-secondary btn-sm">Cancelar</router-link>
   </form>
 </template>
@@ -80,33 +80,26 @@ export default {
     }
   },
   methods: {
-    savePlayer () {
-      this.$validate().then(function (success) {
-        console.log(success)
-        if (!success) {
-          return
-        }
-        console.log(success)
-        console.log(this.$store.state.playerId == null)
-        const saveMethod = this.$store.state.playerId ? 'updatePlayer' : 'addPlayer'
-        const type = this.$store.state.playerId ? 'actualizado' : 'creado'
-        console.log(type)
-        this.$store.dispatch(saveMethod, this.player).then(() => {
-          this.$router.push('hallFame')
-          this.$notify({ group: 'notifications', type: 'success', title: `Jugador ${type}`, text: `El jugador ha sido ${type} con éxito` })
-        })
-      })
-    },
     setAvatar (e) {
       const file = e.target.files || e.dataTransfer.files
       if (!file.length) {
         return
       }
-
       this.player.avatar = file[0]
     },
-    onSubmit (e) {
-      e.preventDefault()
+    onSubmit () {
+      const self = this
+      this.$validate().then(success => {
+        if (success) {
+          const saveMethod = self.$store.state.playerId ? 'updatePlayer' : 'addPlayer'
+          const type = self.$store.state.playerId ? 'actualizado' : 'creado'
+          console.log('PlayerForm: ', self.player)
+          self.$store.dispatch(saveMethod, self.player).then(() => {
+            self.$notify({ group: 'notifications', type: 'success', title: `Jugador ${type}`, text: `El jugador ha sido ${type} con éxito` })
+            self.$router.push('hallFame')
+          })
+        }
+      })
     }
   }
 }

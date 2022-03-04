@@ -47,6 +47,10 @@ export default new Vuex.Store({
     },
     getPlayer (state, player) {
       state.player = player
+      state.playerId = player.id
+    },
+    setPlayerId (state, playerId) {
+      state.playerId = playerId
     }
   },
   actions: {
@@ -74,9 +78,13 @@ export default new Vuex.Store({
       data.append('status', player.status)
       data.append('avatar', player.avatar)
       data.append('ranking', parseInt(player.ranking))
-
+      console.log('data', data)
       return axios
-        .put('player/' + player.id, data)
+        .put('player/' + player.id, data, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
         .then((response) => {
           context.commit('updatePlayer', response.data)
         })

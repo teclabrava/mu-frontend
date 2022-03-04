@@ -54,7 +54,7 @@ export default {
     PlayerForm
   },
   created () {
-    this.$store.state.playerId = null
+    this.$store.commit('setPlayerId', null)
   }
 }
 </script>

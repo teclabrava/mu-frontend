@@ -22,8 +22,7 @@ import PlayerForm from '@/components/PlayerForm'
 export default {
   name: 'UpdatePlayerView',
   created () {
-    this.$store.state.playerId = this.$route.params.id
-    this.$store.dispatch('getPlayer', this.$store.state.playerId)
+    this.$store.dispatch('getPlayer', this.$route.params.id)
   },
   components: {
     PlayerForm
