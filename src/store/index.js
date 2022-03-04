@@ -81,11 +81,7 @@ export default new Vuex.Store({
       data.append('_method', 'PUT')
       console.log('data', data)
       return axios
-        .post('player/' + player.id, data, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        })
+        .post('player/' + player.id, data)
         .then((response) => {
           context.commit('updatePlayer', response.data)
         })
