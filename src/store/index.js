@@ -39,12 +39,6 @@ export default new Vuex.Store({
     initPlayers (state, players) {
       state.players = players
     },
-    updatePlayer (state, player) {
-      const index = state.players.findIndex((c) => c.id === player.id)
-      if (index > -1) {
-        state.players[index] = player
-      }
-    },
     getPlayer (state, player) {
       state.player = player
       state.playerId = player.id
@@ -83,7 +77,7 @@ export default new Vuex.Store({
       return axios
         .post('player/' + player.id, data)
         .then((response) => {
-          context.commit('updatePlayer', response.data)
+          context.commit('initPlayers', response.data)
         })
     },
     getPlayer (context, playerID) {
