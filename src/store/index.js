@@ -78,9 +78,10 @@ export default new Vuex.Store({
       data.append('status', player.status)
       data.append('avatar', player.avatar)
       data.append('ranking', parseInt(player.ranking))
+      data.append('_method', 'PUT')
       console.log('data', data)
       return axios
-        .put('player/' + player.id, data, {
+        .post('player/' + player.id, data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
