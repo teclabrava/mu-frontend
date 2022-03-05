@@ -51,6 +51,15 @@ hr {
     margin-left: 0 !important;
 }
 
+.card-player {
+    position: relative;
+    z-index: 1000;
+}
+
+.card-player img {
+    margin-bottom: -45px;
+}
+
 .page-link,
 .page-link:hover {
     color: #009999;

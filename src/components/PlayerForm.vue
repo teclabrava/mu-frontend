@@ -1,46 +1,94 @@
 <template>
-  <form
-    @submit.prevent="onSubmit"
-    class="player-form mt-5">
-    <input v-if="$store.state.playerId" v-model="$store.state.playerId" type="hidden" />
-    <div class="mb-3">
-      <label for="nickname" class="form-label text-primary">Nickname *</label>
-      <input v-model="player.nickname" type="text" class="form-control" id="nickname" aria-describedby="nicknameHelp">
-      <div v-if="validation.hasError('player.nickname')" class="alert alert-danger form-text" role="alert">
-        {{ validation.firstError('player.nickname') }}
-      </div>
-      <div id="nicknameHelp" class="form-text">Ingresa nombre de jugador</div>
+  <div class="mt-5">
+    <div class="card-player">
+      <img v-if="player.avatar_url" :src="player.avatar_url" class="img-thumbnail rounded-circle avatar-player" :alt="player.nickname" />
+      <img v-else-if="player.avatar_external" :src="player.avatar_external" class="img-thumbnail rounded-circle avatar-player" :alt="player.nickname" />
     </div>
-    <div class="mb-3">
-      <label for="status" class="form-label text-primary">Estado *</label>
-      <select v-model="player.status" class="form-select" id="status" aria-describedby="statusHelp">
-        <option value="">Seleccione uno</option>
-        <option v-for="s in statusArray" :key="s">{{ s }}</option>
-      </select>
-      <div v-if="validation.hasError('player.status')" class="alert alert-danger form-text" role="alert">
-        {{ validation.firstError('player.status') }}
+    <div class="card">
+      <div class="card-body">
+        <form
+          @submit.prevent="onSubmit"
+          class="player-form mt-5">
+          <input v-if="$store.state.playerId" v-model="$store.state.playerId" type="hidden" />
+          <div class="row mb-3">
+            <div class="col-3">
+              <label for="nickname" class="form-label text-primary">Nickname *</label>
+            </div>
+            <div class="col-8">
+              <div class="mb-3 input-group">
+                <span class="input-group-text">
+                  <font-awesome-icon icon="fa-solid fa-user" />
+                </span>
+                <input v-model="player.nickname" placeholder="Ingresa nombre de jugador"
+                       type="text" class="form-control" id="nickname">
+              </div>
+              <div v-if="validation.hasError('player.nickname')" class="alert alert-danger form-text" role="alert">
+                {{ validation.firstError('player.nickname') }}
+              </div>
+            </div>
+            <div class="col"></div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-3">
+              <label for="status" class="form-label text-primary">Estado *</label>
+            </div>
+            <div class="col-8">
+              <div class="mb-3 input-group">
+                <span class="input-group-text">
+                  <font-awesome-icon icon="fa-solid fa-medal" />
+                </span>
+                <select v-model="player.status" class="form-select" id="status">
+                  <option value="">Selecciona el estado entre las opciones</option>
+                  <option v-for="s in statusArray" :key="s">{{ s }}</option>
+                </select>
+              </div>
+              <div v-if="validation.hasError('player.status')" class="alert alert-danger form-text" role="alert">
+                {{ validation.firstError('player.status') }}
+              </div>
+            </div>
+            <div class="col"></div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-3">
+              <label for="avatar" class="form-label text-primary">Avatar <span v-if="!$store.state.playerId">*</span></label>
+            </div>
+            <div class="col-8">
+              <input type="file" @change="setAvatar" class="form-control" id="avatar">
+              <div v-if="!$store.state.playerId">
+                <div v-if="validation.hasError('player.avatar')" class="alert alert-danger form-text" role="alert">
+                  {{ validation.firstError('player.avatar') }}
+                </div>
+              </div>
+            </div>
+            <div class="col"></div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-3">
+              <label for="ranking" class="form-label text-primary">Ranking *</label>
+            </div>
+            <div class="col-8">
+              <div class="mb-3 input-group">
+                <span class="input-group-text">
+                  <font-awesome-icon icon="fa-solid fa-arrow-down-wide-short" />
+                </span>
+                <input v-model="player.ranking" type="number" class="form-control" id="ranking">
+              </div>
+              <div v-if="validation.hasError('player.ranking')" class="alert alert-danger form-text" role="alert">
+                {{ validation.firstError('player.ranking') }}
+              </div>
+            </div>
+            <div class="col"></div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <button type="submit" class="btn btn-primary btn-sm me-2">{{ $store.state.playerId ? 'Actualizar' : 'Crear' }}</button>
+              <router-link to="/salon-fama" class="btn btn-secondary btn-sm">Cancelar</router-link>
+            </div>
+          </div>
+        </form>
       </div>
-      <div id="statusHelp" class="form-text">Selecciona el estado entre las opciones</div>
     </div>
-    <div class="mb-3">
-      <label for="avatar" class="form-label text-primary">Avatar *</label>
-      <input type="file" @change="setAvatar" class="form-control" id="avatar" aria-describedby="avatarHelp">
-      <div v-if="validation.hasError('player.avatar')" class="alert alert-danger form-text" role="alert">
-        {{ validation.firstError('player.avatar') }}
-      </div>
-      <div id="avatarHelp" class="form-text">Selecciona una imagen para usarlo como tu avatar</div>
-    </div>
-    <div class="mb-3">
-      <label for="ranking" class="form-label text-primary">Ranking *</label>
-      <input v-model="player.ranking" type="number" class="form-control" id="ranking" aria-describedby="rankingHelp">
-      <div v-if="validation.hasError('player.ranking')" class="alert alert-danger form-text" role="alert">
-        {{ validation.firstError('player.ranking') }}
-      </div>
-      <div id="rankingHelp" class="form-text">Ingresa los puntos del jugador</div>
-    </div>
-    <button type="submit" class="btn btn-primary btn-sm me-2">{{ $store.state.playerId ? 'Actualizar' : 'Crear' }}</button>
-    <router-link to="/administracion" class="btn btn-secondary btn-sm">Cancelar</router-link>
-  </form>
+  </div>
 </template>
 
 <script>
@@ -59,7 +107,7 @@ export default {
         ? this.$store.getters.getPlayer
         : {
             nickname: null,
-            status: null,
+            status: '',
             avatar: null,
             ranking: null
           }
@@ -96,7 +144,7 @@ export default {
           console.log('PlayerForm: ', self.player)
           self.$store.dispatch(saveMethod, self.player).then(() => {
             self.$notify({ group: 'notifications', type: 'success', title: `Jugador ${type}`, text: `El jugador ha sido ${type} con éxito` })
-            self.$router.push('hallFame')
+            self.$router.push('/salon-fama')
           })
         }
       })
