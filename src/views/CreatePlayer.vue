@@ -7,7 +7,7 @@
           <div class="p-4">
             <div class="col-12 col-xl-8 offset-xl-2 pt-5">
               <h1 class="title text-primary">Nuevo jugador</h1>
-              <PlayerForm />
+              <PlayerForm msg="Accede a la plataforma" />
             </div>
           </div>
         </div>

@@ -254,3 +254,8 @@ a.navbar-brand {
         margin: auto;
     }
 }
+
+/******* VALIDATION ********/
+label.is-invalid{
+    color: #dc3545 !important;
+}

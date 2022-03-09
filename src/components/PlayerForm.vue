@@ -5,79 +5,54 @@
       <img v-else-if="player.avatar_external" :src="player.avatar_external" class="img-thumbnail rounded-circle avatar-player" :alt="player.nickname" />
     </div>
     <div class="card">
-      <div class="card-body">
+      <div class="card-body p-5">
         <form
           @submit.prevent="onSubmit"
-          class="player-form mt-5">
+          class="form-floating player-form mt-5">
           <input v-if="$store.state.playerId" v-model="$store.state.playerId" type="hidden" />
-          <div class="row mb-3">
-            <div class="col-3">
-              <label for="nickname" class="form-label text-primary">Nickname *</label>
+          <div class="form-floating mb-3">
+            <input v-model="player.nickname" placeholder="Ingresa nombre de jugador"
+                   :class="{ 'is-invalid': validation.hasError('player.nickname') }"
+                   type="text" class="form-control" id="nickname">
+            <label for="nickname" class="form-label text-primary"
+                   :class="{ 'is-invalid': validation.hasError('player.nickname') }">Nickname *</label>
+            <div v-if="validation.hasError('player.nickname')" class="invalid-feedback">
+              {{ validation.firstError('player.nickname') }}
             </div>
-            <div class="col-8">
-              <div class="mb-3 input-group">
-                <span class="input-group-text">
-                  <font-awesome-icon icon="fa-solid fa-user" />
-                </span>
-                <input v-model="player.nickname" placeholder="Ingresa nombre de jugador"
-                       type="text" class="form-control" id="nickname">
-              </div>
-              <div v-if="validation.hasError('player.nickname')" class="alert alert-danger form-text" role="alert">
-                {{ validation.firstError('player.nickname') }}
-              </div>
-            </div>
-            <div class="col"></div>
           </div>
-          <div class="row mb-3">
-            <div class="col-3">
-              <label for="status" class="form-label text-primary">Estado *</label>
+          <div class="form-floating mb-3">
+            <select v-model="player.status" class="form-select" id="status"
+                    :class="{ 'is-invalid': validation.hasError('player.status') }">
+              <option value="">Selecciona el estado entre las opciones</option>
+              <option v-for="s in statusArray" :key="s">{{ s }}</option>
+            </select>
+            <label for="status" class="form-label text-primary"
+                   :class="{ 'is-invalid': validation.hasError('player.status') }">Estado *</label>
+            <div v-if="validation.hasError('player.status')" class="invalid-feedback" role="alert">
+              {{ validation.firstError('player.status') }}
             </div>
-            <div class="col-8">
-              <div class="mb-3 input-group">
-                <span class="input-group-text">
-                  <font-awesome-icon icon="fa-solid fa-medal" />
-                </span>
-                <select v-model="player.status" class="form-select" id="status">
-                  <option value="">Selecciona el estado entre las opciones</option>
-                  <option v-for="s in statusArray" :key="s">{{ s }}</option>
-                </select>
-              </div>
-              <div v-if="validation.hasError('player.status')" class="alert alert-danger form-text" role="alert">
-                {{ validation.firstError('player.status') }}
-              </div>
-            </div>
-            <div class="col"></div>
           </div>
-          <div class="row mb-3">
-            <div class="col-3">
-              <label for="avatar" class="form-label text-primary">Avatar <span v-if="!$store.state.playerId">*</span></label>
-            </div>
-            <div class="col-8">
-              <input type="file" @change="setAvatar" class="form-control" id="avatar">
-              <div v-if="!$store.state.playerId">
-                <div v-if="validation.hasError('player.avatar')" class="alert alert-danger form-text" role="alert">
-                  {{ validation.firstError('player.avatar') }}
-                </div>
+          <div class="mb-3">
+            <label for="avatar" class="form-label text-primary"
+                   :class="{ 'is-invalid': validation.hasError('player.avatar') }">Avatar
+              <span v-if="!$store.state.playerId">*</span></label>
+            <input type="file" @change="setAvatar" class="form-control" id="avatar"
+                   :class="{ 'is-invalid': validation.hasError('player.avatar') }">
+            <div v-if="!$store.state.playerId">
+              <div v-if="validation.hasError('player.avatar')" class="invalid-feedback" role="alert">
+                {{ validation.firstError('player.avatar') }}
               </div>
             </div>
-            <div class="col"></div>
           </div>
-          <div class="row mb-3">
-            <div class="col-3">
-              <label for="ranking" class="form-label text-primary">Ranking *</label>
+
+          <div class="form-floating mb-3">
+            <input v-model="player.ranking" type="number" class="form-control" id="ranking"
+                   :class="{ 'is-invalid': validation.hasError('player.ranking') }">
+            <label for="ranking" class="form-label text-primary"
+                   :class="{ 'is-invalid': validation.hasError('player.avatar') }">Ranking *</label>
+            <div v-if="validation.hasError('player.ranking')" class="invalid-feedback" role="alert">
+              {{ validation.firstError('player.ranking') }}
             </div>
-            <div class="col-8">
-              <div class="mb-3 input-group">
-                <span class="input-group-text">
-                  <font-awesome-icon icon="fa-solid fa-arrow-down-wide-short" />
-                </span>
-                <input v-model="player.ranking" type="number" class="form-control" id="ranking">
-              </div>
-              <div v-if="validation.hasError('player.ranking')" class="alert alert-danger form-text" role="alert">
-                {{ validation.firstError('player.ranking') }}
-              </div>
-            </div>
-            <div class="col"></div>
           </div>
           <div class="row mb-4">
             <div class="col">
