@@ -21,6 +21,7 @@ export default new Vuex.Store({
     },
     player: null,
     q: null,
+    playerId: null,
     url: 'player'
   },
   getters: {
@@ -29,20 +30,21 @@ export default new Vuex.Store({
     },
     getPlayer (state) {
       return state.player
+    },
+    getPlayerId (state) {
+      return state.playerId
     }
   },
   mutations: {
     initPlayers (state, players) {
       state.players = players
     },
-    updatePlayer (state, player) {
-      const index = state.players.findIndex((c) => c.id === player.id)
-      if (index > -1) {
-        state.players[index] = player
-      }
-    },
     getPlayer (state, player) {
       state.player = player
+      state.playerId = player.id
+    },
+    setPlayerId (state, playerId) {
+      state.playerId = playerId
     }
   },
   actions: {
@@ -70,11 +72,12 @@ export default new Vuex.Store({
       data.append('status', player.status)
       data.append('avatar', player.avatar)
       data.append('ranking', parseInt(player.ranking))
-
+      data.append('_method', 'PUT')
+      console.log('data', data)
       return axios
-        .put('player/' + player.id, data)
+        .post('player/' + player.id, data)
         .then((response) => {
-          context.commit('updatePlayer', response.data)
+          context.commit('initPlayers', response.data)
         })
     },
     getPlayer (context, playerID) {

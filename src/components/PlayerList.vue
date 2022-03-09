@@ -12,7 +12,9 @@
             <input type="text" class="form-control form-control-lg" placeholder="Ingrese el término a buscar..."
                    aria-label="Término a buscar" aria-describedby="button-addon2" v-model="$store.state.q"
                    v-on:keyup="doSearch">
-            <span class="input-group-text" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <span class="input-group-text" id="button-addon2">
+              <font-awesome-icon :icon="['fa-solid', 'fa-magnifying-glass']" />
+            </span>
           </div>
         </form>
         <hr/>
@@ -37,9 +39,11 @@
             <td>{{ player.nickname }}</td>
             <td>{{ player.status }}</td>
             <td v-if="edit === 1">
-              <router-link :to="{ name: 'updatePlayer', params: {id: player.id} }" class="pe-2 text-info"><i class="fa-solid fa-user-pen"></i></router-link>
+              <router-link :to="{ name: 'updatePlayer', params: {id: player.id} }" class="pe-2 text-info">
+                <font-awesome-icon icon="fa-solid fa-user-pen"/>
+              </router-link>
               <a @click="$store.dispatch('deletePlayer',player.id)" href='#' class="pe-2 text-danger" title="Eliminar">
-                <i class="fa-solid fa-user-slash"></i>
+                <font-awesome-icon :icon="['fa-solid', 'fa-user-slash']"/>
               </a>
             </td>
           </tr>
@@ -61,6 +65,7 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 export default {
   name: 'PlayerList',
   props: {
@@ -87,6 +92,9 @@ export default {
       this.$store.state.url = this.players.links.next
       this.$store.dispatch('initApp', this.players)
     }
+  },
+  components: {
+    FontAwesomeIcon
   }
 }
 </script>

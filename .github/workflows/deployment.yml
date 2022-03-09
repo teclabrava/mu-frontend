@@ -4,28 +4,60 @@ on:
     branches:
       - 'develop'
 jobs:
-  deploy:
+  test-lints:
+    name: Test Lint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-      with:
-        fetch-depth: 1
-    - name: Configure AWS credentials from Test account
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ secrets.AWS_REGION }}
-    - name: Install Node dependencies
-      run: |
-        npm install
-    - name: Environment Settings
-      run: |
-        echo "VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }}" >> .env
-    - name: Build of Solution
-      run: |
-        npm run build
-    - name: Deploym to AWS
-      run: |
-        aws s3 sync ./dist/ s3://manu-frontend-${GITHUB_REF##*/} --delete --exclude avatars --cache-control max-age=86400
-        aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Install Node dependencies
+        run: |
+          npm install
+      - name: Run lint tests
+        run: |
+          echo VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }} >> .env
+          npm run lint
+  test-unit:
+    name: Test Unit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Install Node dependencies
+        run: |
+          npm install
+      - name: Run unit tests
+        run: |
+          npm run test:unit
+  deploy:
+    needs:
+      - test-lints
+      - test-unit
+    name: Upload to S3
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Configure AWS credentials from Test account
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      - name: Install Node dependencies
+        run: |
+          npm install
+      - name: Environment Settings
+        run: |
+          echo VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }} >> .env
+          echo NODE_ENV=production >> .env
+      - name: Build of Solution
+        run: |
+          npm run build
+      - name: Deploym to AWS
+        run: |
+          aws s3 sync ./dist/ s3://manu-frontend-${GITHUB_REF##*/} --delete --exclude avatars --cache-control max-age=86400
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"

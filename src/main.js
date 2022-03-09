@@ -8,9 +8,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { fas } from '@fortawesome/free-solid-svg-icons'
-
-// Import Bootstrap an BootstrapVue CSS files (order is important)
 import Notifications from 'vue-notification'
+import SimpleVueValidation from 'simple-vue-validator'
+// Import Bootstrap an BootstrapVue CSS files (order is important)
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -26,6 +26,8 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 Vue.use(Notifications)
+Vue.use(SimpleVueValidation)
+
 new Vue({
   router,
   store,
