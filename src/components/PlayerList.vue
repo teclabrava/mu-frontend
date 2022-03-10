@@ -55,16 +55,16 @@
         <nav aria-label="Navegación">
           <ul class="pagination justify-content-center">
             <li class="page-item">
-              <button class="page-link" @click="setUrlFirst" href="#">Primero</button>
+              <a class="page-link" @click="setUrlFirst" href="q#">Primero</a>
             </li>
             <li v-if="players.links.prev" class="page-item">
-              <button class="page-link" @click="setUrlPrev" href="#">Anterior</button>
+              <a class="page-link" @click="setUrlPrev" href="#">Anterior</a>
             </li>
             <li v-if="players.links.next" class="page-item">
-              <button class="page-link" @click="setUrlNext" href="#">Siguiente</button>
+              <a class="page-link" @click="setUrlNext" href="#">Siguiente</a>
             </li>
             <li v-if="players.links.last" class="page-item">
-              <button class="page-link" @click="setUrlLast" href="#">Último</button>
+              <a class="page-link" @click="setUrlLast" href="#">Último</a>
             </li>
           </ul>
         </nav>
@@ -109,6 +109,9 @@ export default {
     setUrlLast () {
       this.$store.state.url = this.players.links.last
       this.$store.dispatch('initApp', this.players)
+    },
+    onSubmit (e) {
+      e.preventDefault()
     }
   },
   components: {
