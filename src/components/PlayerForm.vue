@@ -34,17 +34,15 @@
           </div>
           <div class="mb-3">
             <label for="avatar" class="form-label text-primary"
-                   :class="{ 'is-invalid': validation.hasError('player.avatar') }">Avatar
-              <span v-if="!$store.state.playerId">*</span></label>
+                   :class="{ 'is-invalid': validation.hasError('player.avatar') }">
+              Avatar <span v-if="!$store.state.playerId" >*</span>
+            </label>
             <input type="file" @change="setAvatar" class="form-control" id="avatar"
                    :class="{ 'is-invalid': validation.hasError('player.avatar') }">
-            <div v-if="!$store.state.playerId">
-              <div v-if="validation.hasError('player.avatar')" class="invalid-feedback" role="alert">
-                {{ validation.firstError('player.avatar') }}
-              </div>
+            <div v-if="validation.hasError('player.avatar')" class="invalid-feedback" role="alert">
+              {{ validation.firstError('player.avatar') }}
             </div>
           </div>
-
           <div class="form-floating mb-3">
             <input v-model="player.ranking" type="number" class="form-control" id="ranking"
                    :class="{ 'is-invalid': validation.hasError('player.ranking') }">
@@ -96,7 +94,9 @@ export default {
       return Validator.value(value).required('Este campo es obligatorio')
     },
     'player.avatar': function (value) {
-      return Validator.value(value).required('Este campo es obligatorio')
+      if (!this.$store.state.playerId) {
+        return Validator.value(value).required('Este campo es obligatorio')
+      }
     },
     'player.ranking': function (value) {
       return Validator.value(value).integer().required('Este campo es obligatorio y debe ser un entero')
