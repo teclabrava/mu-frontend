@@ -68,6 +68,7 @@
             </li>
           </ul>
         </nav>
+        <p>Total registros: {{ players.total_count }}</p>
       </div>
     </div>
   </div>
