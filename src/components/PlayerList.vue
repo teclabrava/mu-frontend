@@ -19,7 +19,7 @@
           </div>
         </form>
         <div class="row mt-5">
-          <div class="col-6 mb-5" v-for="(player) in players.records" :key="player.id">
+          <div class="col-md-6 mb-5" v-for="(player) in players.records" :key="player.id">
             <div class="player-single">
               <div class="top-area row">
                 <div class="col-5">
