@@ -51,6 +51,52 @@ hr {
     margin-left: 0 !important;
 }
 
+.player-single {
+    display: block;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 5px 25px 0px rgb(0 0 0 / 30%);
+    box-shadow: 0px 5px 25px 0px rgb(0 0 0 / 30%);
+    position: relative;
+    -webkit-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    padding: 0 25px 10px;
+}
+.player-single:hover {
+    border-color: #419999;
+    -webkit-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    transform: translateY(-10px);
+}
+.player-single .top-area {
+    border-bottom: 1px dashed #ced4da;
+    margin-bottom: -25px;
+}
+.player-single .icon {
+    position: relative;
+    top: -20px;
+}
+.player-single span.ranking {
+    border: 1px solid #419999;
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 5px;
+    top: -10px;
+    position: relative;
+    background: #fff;
+    font-size: 14px;
+}
+.player-single span.ranking .oro {
+    color: #C9B037;
+}
+.player-single span.ranking .plata {
+    color: #D7D7D7;
+}
+.player-single span.ranking .bronce {
+    color: #6A3805;
+}
 .card-player {
     position: relative;
     z-index: 1000;

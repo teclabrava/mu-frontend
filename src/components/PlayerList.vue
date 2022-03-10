@@ -1,7 +1,7 @@
 <template>
   <div class="site-navbar-small text-center">
     <div class="p-4">
-      <div class="col-12 col-xl-8 offset-xl-2 pt-5">
+      <div class="col-12 col-xl-10 offset-xl-1 pt-5">
         <h1 class="title text-primary">Salón de la fama</h1>
         <p class="">Nuestros mejores guerreros estan aquí</p>
         <p v-if="edit === 1" class="text-center">
@@ -17,38 +17,40 @@
             </span>
           </div>
         </form>
-        <hr/>
-        <table class="table table-sm table-responsive table-hover table-striped align-middle">
-          <thead>
-          <tr>
-            <th>Ranking</th>
-            <th style="width: 100px;">Avatar</th>
-            <th>Nombres</th>
-            <th>Estado</th>
-            <th v-if="edit === 1">Opciones</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr v-for="(player) in players.records" :key="player.id">
-            <td>{{ player.ranking }}</td>
-            <td>
-              <img v-if="player.avatar_url" :src="player.avatar_url" class="img-thumbnail rounded-circle avatar-player" :alt="player.nickname" />
-              <img v-else :src="player.avatar_external" class="img-thumbnail rounded-circle avatar-player" :alt="player.nickname" />
-            </td>
-
-            <td>{{ player.nickname }}</td>
-            <td>{{ player.status }}</td>
-            <td v-if="edit === 1">
-              <router-link :to="{ name: 'updatePlayer', params: {id: player.id} }" class="pe-2 text-info">
-                <font-awesome-icon icon="fa-solid fa-user-pen"/>
-              </router-link>
-              <a @click="$store.dispatch('deletePlayer',player.id)" href='#' class="pe-2 text-danger" title="Eliminar">
-                <font-awesome-icon :icon="['fa-solid', 'fa-user-slash']"/>
-              </a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
+        <div class="row mt-5">
+          <div class="col-6 mb-5" v-for="(player) in players.records" :key="player.id">
+            <div class="player-single">
+              <div class="top-area row">
+                <div class="col-5">
+                  <div class="icon">
+                    <img v-if="player.avatar_url" :src="player.avatar_url" class="img-thumbnail rounded-circle avatar-player" :alt="player.nickname" />
+                    <img v-else :src="player.avatar_external" class="img-thumbnail rounded-circle avatar-player" :alt="player.nickname" />
+                    <span class="ranking">
+                      {{ player.ranking }}
+                      <span :class="player.status"><font-awesome-icon :icon="['fas', 'fa-star']"/></span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-7">
+                  <h4 class="text-start mt-4">{{ player.nickname }}</h4>
+                </div>
+              </div>
+              <div class="bottom-area">
+                <div class="mb-3">
+                  <small><b>ID:</b> {{ player.id }}</small>
+                </div>
+                <div v-if="edit === 1">
+                  <router-link :to="{ name: 'updatePlayer', params: {id: player.id} }" class="btn btn-sm btn-secondary me-2">
+                    <font-awesome-icon icon="fa-solid fa-user-pen"/> Actualizar
+                  </router-link>
+                  <a @click="$store.dispatch('deletePlayer',player.id)" href='#' class="btn btn-sm btn-secondary me-2" title="Eliminar">
+                    <font-awesome-icon :icon="['fa-solid', 'fa-user-slash']"/> Eliminar
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <nav aria-label="Navegación">
           <ul class="pagination justify-content-center">
             <li class="page-item">
