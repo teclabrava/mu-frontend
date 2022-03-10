@@ -16,6 +16,7 @@ import PlayerList from '../components/PlayerList'
 export default {
   name: 'SalonFamaView',
   created () {
+    this.$store.state.url = 'player'
     this.$store.dispatch('initApp')
   },
   components: {

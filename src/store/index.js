@@ -15,8 +15,9 @@ export default new Vuex.Store({
       records: null,
       links: {
         first: null,
-        self: null,
-        next: null
+        prev: null,
+        next: null,
+        last: null
       }
     },
     player: null,

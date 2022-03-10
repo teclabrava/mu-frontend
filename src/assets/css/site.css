@@ -50,7 +50,9 @@ hr {
 .layout-full > .loader {
     margin-left: 0 !important;
 }
-
+.search-icon {
+    cursor: pointer;
+}
 .player-single {
     display: block;
     text-align: center;

@@ -7,12 +7,13 @@
         <p v-if="edit === 1" class="text-center">
           <router-link to="/nuevo-jugador" class="btn btn-primary btn-sm">Nuevo jugador</router-link>
         </p>
-        <form>
+        <form
+          @submit.prevent="onSubmit">
           <div class="input-group mb-3">
             <input type="text" class="form-control form-control-lg" placeholder="Ingrese el término a buscar..."
                    aria-label="Término a buscar" aria-describedby="button-addon2" v-model="$store.state.q"
-                   v-on:keyup="doSearch">
-            <span class="input-group-text" id="button-addon2">
+                   @keyup.enter="doSearch" @focusout="doSearch">
+            <span class="input-group-text search-icon" id="button-addon2" @click="doSearch">
               <font-awesome-icon :icon="['fa-solid', 'fa-magnifying-glass']" />
             </span>
           </div>
@@ -54,10 +55,16 @@
         <nav aria-label="Navegación">
           <ul class="pagination justify-content-center">
             <li class="page-item">
-              <a class="page-link" @click="setUrlFirst" href="#">Primero</a>
+              <button class="page-link" @click="setUrlFirst" href="#">Primero</button>
+            </li>
+            <li v-if="players.links.prev" class="page-item">
+              <button class="page-link" @click="setUrlPrev" href="#">Anterior</button>
             </li>
             <li v-if="players.links.next" class="page-item">
-              <a class="page-link" @click="setUrlNext" href="#">Siguiente</a>
+              <button class="page-link" @click="setUrlNext" href="#">Siguiente</button>
+            </li>
+            <li v-if="players.links.last" class="page-item">
+              <button class="page-link" @click="setUrlLast" href="#">Último</button>
             </li>
           </ul>
         </nav>
@@ -90,8 +97,16 @@ export default {
       this.$store.state.url = 'player'
       this.$store.dispatch('initApp', this.players)
     },
+    setUrlPrev () {
+      this.$store.state.url = this.players.links.prev
+      this.$store.dispatch('initApp', this.players)
+    },
     setUrlNext () {
       this.$store.state.url = this.players.links.next
+      this.$store.dispatch('initApp', this.players)
+    },
+    setUrlLast () {
+      this.$store.state.url = this.players.links.last
       this.$store.dispatch('initApp', this.players)
     }
   },
