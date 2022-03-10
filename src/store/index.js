@@ -77,7 +77,7 @@ export default new Vuex.Store({
       return axios
         .post('player/' + player.id, data)
         .then((response) => {
-          context.commit('initPlayers', response.data)
+          context.dispatch('initApp')
         })
     },
     getPlayer (context, playerID) {
